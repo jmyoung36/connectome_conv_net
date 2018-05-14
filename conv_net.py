@@ -15,7 +15,7 @@ import tensorflow as tf
 from six.moves import cPickle as pickle
 
 #load sample data
-pickle_file = 'tensors_medium_noise.pickle' #or tensors_high_noise.pickle
+pickle_file = 'tensors_5_noiselevel.pickle' #or tensors_high_noise.pickle
 with open(pickle_file, 'rb') as f:
   save = pickle.load(f)
   data_tensor1 = save['data_tensor1']
@@ -186,7 +186,7 @@ for i in range(num_folds):
       #calculate loss-function (cross-entropy) in training
       logits = model(tf_train_dataset,keep_pr)
       loss = tf.reduce_mean(
-        tf.nn.softmax_cross_entropy_with_logits(logits, tf_train_labels))
+        tf.nn.softmax_cross_entropy_with_logits(logits='logits', labels='tf_train_labels'))
         
       #optimizer definition
       learning_rate = 0.001
