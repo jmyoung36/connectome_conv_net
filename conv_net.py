@@ -186,7 +186,7 @@ for i in range(num_folds):
       #calculate loss-function (cross-entropy) in training
       logits = model(tf_train_dataset,keep_pr)
       loss = tf.reduce_mean(
-        tf.nn.softmax_cross_entropy_with_logits(logits='logits', labels='tf_train_labels'))
+        tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=tf_train_labels))
         
       #optimizer definition
       learning_rate = 0.001
